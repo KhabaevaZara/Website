@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доставка</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+  /> <!--Ссылка на иконки в регистрации -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" ></script>
+        
+</head>
+<body>
+
+    <header>
+        <div class="header-contaner">
+            <div class="catalog-icon" id="menuBurger">
+    <i class="fas fa-bars"></i>
+</div>
+<a href="index.html" class="logo-link">
+    <img src="/images/icons8-главная-64.png" alt="Логотип сайта" class="logo-image">
+  </a>
+            <div class="search-bar">
+                <input type="search" name="search" placeholder="Поиск товаров">
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="cart-icon" style="font-size: 32px;"  onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+          <div class="header-contaner">
+        <div class="account-icon" style="font-size: 32px;" onclick="toggleAccount()">
+            <i class="fas fa-user"></i>
+        </div>
+
+      
+        </div>
+              <!-- Кнопка для переключения темы -->
+              <div style= "color:black; " onclick="toggleTheme()">
+                <button style="background: none; border: none; font-size: 32px; color: inherit; cursor: pointer; padding: 5px;">
+                    <i class="theme-icon fas fa-moon"></i> 
+                </button>
+            </div>
+                    </div>
+
+       
+    </header>
+
+
+    <div class="cart" id="cart">
+        <h2>Корзина</h2>
+        <div id="cart-items"></div>
+        <a href="cart.html" class= "cartbu">Перейти в корзину</a>  <!--Почему ссылка не работает -->
+        
+        <button class= "cartbu" onclick="clearCart()">Очистить корзину</button>
+    </div>
+
+
+
+
+
+<!--Каталог-->
+<div class="catalog" id="catalog">
+    <h6>Каталог</h6>
+   <a href="wallpaper.html" style = " text-decoration :none;  color:black;">    <button class="category-button" data-category="1">      
+        <span>Обои</span> <i class="fas fa-chevron-right"></i>
+  </button>  </a>
+    <a href="categorysantexnica.html" style = " text-decoration :none;  color:black;"> <button class="category-button" data-category="2">
+        <span>Сантехника</span> <i class="fas fa-chevron-right"></i>
+    </button>  </a>
+    <a href="/html/category.html" style = " text-decoration :none;  color:black;">    <button class="category-button" data-category="1">      
+        <span>Текстиль</span> <i class="fas fa-chevron-right"></i>
+  </button>  </a>
+    <a href="/html/products.html" style = " text-decoration :none;  color:black;"> <button class="category-button" data-category="2">
+        <span>Напольные покрытия</span> <i class="fas fa-chevron-right"></i>
+    </button>  </a>
+                                      
+</div>
+<!-- Popup для подкатегорий -->
+<div class="popup" id="popup">
+<span class="clobutton" onclick="closePopup()">&times;</span>
+<h2 id="popupTitle"></h2>
+<ul id="popupContent"></ul>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+<!-- НАЧАЛО РЕГИСТРАЦИИ  -->
+<div class="account" id="account" onmouseleave="hideAccount()">
+    <h2 class="two">Аккаунт</h2>
+    <button class="sign" id="signButton" onclick="openRegisterModal()">Войти или Зарегистрироваться</button>
+</div>
+
+<!-- Модальное окно для регистрации -->
+<div id="registerModal" class="modal">
+    <span class="close" onclick="closeRegisterModal()">&times;</span> 
+    <div class="modal-content sign-in">
+        <form id="loginForm" action="">
+            <h2 style="color: white;" class="two">Войти</h2>
+            <div class="input-group">
+                <input type="loginUsername" id="loginUsername" required> 
+                <label for="loginUsername">Никнейм</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="loginPassword" required>
+                <label for="loginPassword">Пароль</label>
+            </div>
+            <div class="remember">
+                <label><input type="checkbox"> Запомнить меня</label>
+            </div>
+            <button class="registr" type="submit">Войти</button>
+            <div class="signUp-link">
+                <p class="two">У вас нет аккаунта? <a href="#" style="color: white;" class="signUpBtn-link">Регистрация</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="modal-content sign-up">
+        <form id="registerForm" action="">
+            <h2 style="color: white;" class="two">Регистрация</h2><br>
+            <div class="input-group">
+                <input type="text" id="registerusername" required>
+                <label for="registerusername">Имя</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="registerFirstName" required>
+                <label for="registerFirstName">Имя</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="registerLastName" required> 
+                <label for="registerLastName">Фамилия</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="registerEmail" required>
+                <label for="registerEmail">Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="registerPassword" required>
+                <label for="registerPassword">Придумайте пароль</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="registerRepeatPassword" required>
+                <label for="registerRepeatPassword">Повторите пароль</label>
+            </div>
+            <div class="remember">
+                <label style="color: white;" class="two">
+                    <input type="checkbox"> Я соглашаюсь с чем-то
+                </label>
+            </div>
+            <button class="registr" type="submit">Зарегистрироваться</button>
+            <div class="signUp-link">
+                <p style="color: white;" class="two">У Вас уже есть аккаунт?
+                    <a style="color: white;" href="#" class="signInBtn-link">Войти</a>
+                </p>
+                <div class="gogle" type="button" onclick="socialLogin()" style="color: white;">Войти через <span class="social-link">соцсети</span></div>
+            </div>
+            <div class="tooltip" id="tooltip">
+                <span class="clo" onclick="hideTooltip()">&#10006;</span>
+                <ul style="text-align:left; padding:5px; margin-top:10px;">
+                    <li>
+                        <a href="#" style="margin-right: 3px; color: black; display: inline-block;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="margin-right: 3px; color: black; display: inline-block;">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="margin-right: 3px; color: black; display: inline-block;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div></div>
+<!--КОНЕЦ РЕГИСТРАЦИИ-->
+
+
+    <main>
+        <section id="user" class="content-section-user">
+            <h2>Доставка</h2>
+            <div class="User-profil">
+                <h2 id="mainUsername"></h2>
+                <div class="profile-icon">
+                
+                    <div class="avatar-container">
+                        <img alt="Ваш аватар" class="avatar">
+                        <button class="change-avatar-button">Сменить аватар</button>
+                        <input type="file" id="avatar-input" accept="image/*" style="display:none;">
+                      </div>             
+ 
+</div>
+
+<style>
+    table {
+        width: 90%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 30px auto;
+        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
+        overflow: hidden;
+        background: white;
+        position: relative;
+    }
+    
+    table::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    .product-image {
+        width: 170px;
+        height: auto;
+        border-radius: 6px;
+        transition: transform 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .product-image:hover {
+        transform: scale(1.03);
+    }
+    
+    thead {
+        background-color: #f8faff;
+        color: black;
+        font-size: 25px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    
+    thead th {
+        padding: 18px 15px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 18px;
+        border-bottom: 2px solid #e0e8ff;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #2c3e50;
+    }
+    
+    tbody tr {
+        font-size: 20px;
+        border-bottom: 1px solid #eaeff5;
+        transition: all 0.25s ease;
+    }
+    
+    tbody tr:last-child {
+        font-size: 20px;
+        border-bottom: none;
+    }
+    
+    tbody tr:hover {
+        background-color: #f5f9ff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    
+    tbody td {
+        padding: 16px 15px;
+        font-size: 25px;
+        color: #34495e;
+        vertical-align: middle;
+    }
+    
+    td:nth-child(1) {
+        width: 90px;
+        padding-left: 25px;
+        color: black;
+    }
+    
+    td:nth-child(2) {
+        min-width: 300px;
+        max-width: 500px;
+        color: #2c3e50;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+    
+    td:nth-child(3) {
+        font-weight: 600;
+        color: #ea3810;
+        white-space: nowrap;
+    }
+    
+    td:nth-child(4) {
+        color: black;
+        text-align: center;
+        font-weight: 500;
+    }
+    
+    td:nth-child(5),
+    td:nth-child(6) {
+        color: #7f8c8d;
+        white-space: nowrap;
+        font-size: 23px;
+    }
+    
+    /* Анимация при загрузке */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    tbody tr {
+        animation: fadeIn 0.4s ease forwards;
+    }
+    
+    tbody tr:nth-child(1) { animation-delay: 0.1s; }
+    tbody tr:nth-child(2) { animation-delay: 0.2s; }
+    tbody tr:nth-child(3) { animation-delay: 0.3s; }
+    
+    /* Стиль для статуса доставки */
+    .delivered {
+        color: #27ae60 !important;
+        font-weight: 600;
+        font-size: 26px;
+    }
+    
+    .pending {
+        color: #27ae60 !important;
+        font-weight: 600;
+        font-size: 26px;
+    }
+    
+    /* Кнопка действия */
+    .action-btn {
+        padding: 8px 16px;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+    
+    .action-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(39, 117, 252, 0.3);
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Изображение</th>
+            <th>Название товара</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Дата заказа</th>
+            <th>Дата прибытия</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img src="http://127.0.0.1:8000/media/images/2025/04/29/Изображение_5.jpeg" alt="Товар 1" class="product-image"></td>
+            <td>Обои флизелиновые Palitra Home Krasota Moya серые 1.06 м HC31227-44a</td>
+            <td>15000 ₽</td>
+            <td>3</td>
+            <td>27.05.2025</td>
+            <td class="delivered">31.05.2025</td>
+        </tr>
+        <tr>
+            <td><img src="/images/05EF234B-642A-48DA-96B3-E4ECA556EAB8.jpeg" alt="Товар 2" class="product-image"></td>
+            <td>Сплит-система Monlan MSH-7 7K BTU охлаждение/обогрев</td>
+            <td>12750 ₽</td>
+            <td>1</td>
+            <td>27.05.2025</td>
+            <td class="delivered">30.05.2025</td>
+        </tr>
+        <tr>
+            <td><img src="http://127.0.0.1:8000/media/images/2025/06/04/Изображение_59.jpeg" alt="Товар 3" class="product-image"></td>
+            <td>Ванна Sata Wert First акрил 160x160 см
+                </td>
+            <td>25460 ₽</td>
+            <td>1</td>
+            <td>27.05.2025</td>
+            <td class="pending">31.05.2023</td>
+        </tr>
+    </tbody>
+</table>
+
+
+</section>
+
+    <footer>
+        <hr>
+        <div class="containr"><div class="subscribe"></div><div class="footer_navigation">
+            <div class="footer_menu">
+        <div class="item"><div class="caption">Покупателям</div>
+        <ul class="menu_list">
+            <a href="/html/category.html">Каталог</a>
+            <a href="/about/arktika-servis/">Расрочка/Кредиты</a>
+            <a href="/about/bonus-program/">Бонусная программа</a>
+            <a href="/about/podarochnye-karty/">Подарочные карты</a>
+        </ul></div>
+        <div class="item"> 
+            <div class="caption">Информация</div>
+        <ul class="menu_list">
+            <a href="/information/oplata/">Как оплатить</a>
+            <a href="/information/feedback/">Обратная связь</a>
+            <a href="/information/jobs/">Гарантия качества </a>
+           <a href="contacts.html">Контакты</a>
+        </ul></div>   
+             <div class="item"><div class="caption">Наши услуги</div>
+            <ul class="menu_list"><a href="dostavkatext.html">Доставка</a>
+            </ul>
+        </div>
+        </div>
+             <div class="contact_info"><div class="phone"><a href="tel:8 (918) 827-20-12">8 (918) 827-20-12</a> (с 09:30 до 19:00) </div>
+            <div class="address">Адрес магазина:<br>ул. Астана Кесаева, 33"а, Владикавказ <br> Респ. Северная Осетия — Алания</div> 
+            <div class="copyright">© 1996—2024, ТК «Декор центр»  </div>
+        </div></div></div>
+       
+    </footer>
+
+    <script src="/script.js/registr.js" ></script>
+    <script src="/script.js/catalog.js" defer></script>
+    <script src="/script.js/auth.js" defer></script>
+    <script src="/script.js/dostavka.js" defer> </script>
+    <script src="/script.js/theme.js" defer></script>
+    <script src="/script.js/kabinet.js" defer></script>
+</body>
+</html>
+
+  

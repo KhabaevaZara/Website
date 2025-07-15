@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин</title>
+    <link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/> <!--Ссылка на иконки в регистрации -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+<body>
+    
+    <header>
+        <div class="header-contaner">
+            <div class="catalog-icon" id="menuBurger">
+    <i class="fas fa-bars"></i>
+</div>
+<a href="index.html" class="logo-link">
+    <img src="/images/icons8-главная-64.png" alt="Логотип сайта" class="logo-image">
+  </a>
+  </style>
+<div class="search-bar">
+    <input type="search" id="productSearch" name="search" placeholder="Поиск товаров" autocomplete="off">
+    <button type="submit">
+        <i class="fas fa-search"></i>
+    </button>
+    <div id="searchSuggestions" class="suggestions-container"></div>
+    <div id="searchError" class="error-message"></div>
+</div>
+<div class="cart-icon "  style="font-size: 32px;"  target="_blank" rel="noopener noreferrer" onclick="window.location.href='cart.html'">
+    <i class="fas fa-shopping-cart"></i>
+</div>
+          <div class="header-contaner">
+        <div class="account-icon" style="font-size: 32px;"  onclick="toggleAccount()">
+            <i class="fas fa-user"></i>
+        </div>
+        </div>
+              <!-- Кнопка для переключения темы -->
+ <div style= "color:white; " onclick="toggleTheme()">
+    <button style="background: none; border: none; font-size: 32px; color: inherit; cursor: pointer; padding: 5px;">
+        <i class="theme-icon fas fa-moon"></i> 
+    </button>
+</div>
+        </div>
+    </header>
+   
+
+
+<!--Каталог-->
+ <div class="catalog" id="catalog">
+    <h6 style="font-size: 45px;">Каталог</h6>
+   <a href="wallpaper.html" style = " text-decoration :none;  color:black;">    <button  style="font-size: 27px;"  class="category-button" data-category="1">      
+        <span>Обои</span> <i class="fas fa-chevron-right"></i>
+  </button>  </a>
+    <a href="categorysantexnica.html" style = " text-decoration :none;  color:black;"> <button style="font-size: 27px;" class="category-button" data-category="2">
+        <span>Сантехника</span> <i class="fas fa-chevron-right"></i>
+    </button>  </a>
+ 
+    <a href="/html/products.html" style = " text-decoration :none;  color:black;"> <button style="font-size: 27px;" class="category-button" data-category="2">
+        <span>Напольные покрытия</span> <i class="fas fa-chevron-right"></i>
+    </button>  </a>
+    <button class="category-button" data-category="4">
+        <a href="furniture.html" style = " text-decoration :none;  color:black;"> <span style="font-size: 27px;">Мебель</span> <i class="fas fa-chevron-right"></i>
+               </a></button>
+               <button class="category-button" data-category="5">
+                   <a href="dishes.html" style = " text-decoration :none;  color:black;"> <span style="font-size: 27px;">Посуда</span> <i class="fas fa-chevron-right"></i>
+                   </a></button>
+                 
+                       <button class="category-button" data-category="7">
+                           <a href="householdappliances.html" style = " text-decoration :none;  color:black;"> <span style="font-size: 27px;">Бытовая техника</span> <i class="fas fa-chevron-right"></i>
+                           </a></button>
+                               <button class="category-button" data-category="8">
+                                   <a href="decor.html" style = " text-decoration :none;  color:black;"> <span style="font-size: 27px;">Декор</span> <i class="fas fa-chevron-right"></i>
+                                   </a></button> 
+                                   <button class="category-button" data-category="9">
+                                       <a href="tools.html" style = " text-decoration :none;  color:black;"> <span style="font-size: 27px;">Инструменты</span> <i class="fas fa-chevron-right"></i>
+                                       </a></button>                             
+</div>
+
+    
+
+<!-- Popup для подкатегорий -->
+<div class="popup" id="popup">
+<span class="clobutton" onclick="closePopup()">&times;</span>
+<h2 id="popupTitle"></h2>
+<ul id="popupContent"></ul>
+</div>
+
+<!-- НАЧАЛО РЕГИСТРАЦИИ  -->
+<div class="account" id="account" onmouseleave="hideAccount()">
+    <h2 class="two">Аккаунт</h2>
+    <button class="sign" id="signButton" onclick="openRegisterModal()">Войти или Зарегистрироваться</button>
+</div>
+<!-- Модальное окно для регистрации -->
+<div id="registerModal" class="modal">
+    <span class="close" onclick="closeRegisterModal()">&times;</span> 
+    <div class="modal-content sign-in">
+        <form id="loginForm" action="">
+            <h2 style="color: white;" class="two">Войти</h2>
+            <div class="input-group">
+                <input type="loginUsername" id="loginUsername" required> 
+                <label for="loginUsername">Никнейм</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="loginPassword" required>
+                <label for="loginPassword">Пароль</label>
+            </div>
+            <div class="remember">
+                <label><input type="checkbox"> Запомнить меня</label>
+            </div>
+            <button class="registr" type="submit">Войти</button>
+            <div class="signUp-link">
+                <p class="two">У вас нет аккаунта? <a href="#" style="color: white;" class="signUpBtn-link">Регистрация</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="modal-content sign-up">
+        <form id="registerForm" action="">
+            <h2 style="color: white;" class="two">Регистрация</h2><br>
+            <div class="input-group">
+                <input type="text" id="registerusername" required>
+                <label for="registerusername">Имя</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="registerFirstName" required>
+                <label for="registerFirstName">Имя</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="registerLastName" required> 
+                <label for="registerLastName">Фамилия</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="registerEmail" required>
+                <label for="registerEmail">Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="registerPassword" required>
+                <label for="registerPassword">Придумайте пароль</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="registerRepeatPassword" required>
+                <label for="registerRepeatPassword">Повторите пароль</label>
+            </div>
+            <div class="remember">
+            </div>
+            <button class="registr" type="submit">Зарегистрироваться</button>
+            <div class="signUp-link">
+                <p style="color: white;" class="two">У Вас уже есть аккаунт?
+                    <a style="color: white;" href="#" class="signInBtn-link">Войти</a>
+                </p>  
+        </form>
+    </div>
+</div></div>
+
+<!--КОНЕЦ РЕГИСТРАЦИИ-->
+
+ 
+<!-- НАЧАЛО КАРУСЕЛИ -->
+<div class="carousel">
+<div class="itms">
+<div class="itm"><img src="/images/4718E5C0-E6E5-4840-A400-3A5196CCF5BB_4_5005_c.jpeg" > </div>
+<div class="itm"><img src="/images/4E128DA3-5FB9-42B9-A1F8-050568F90C6B_4_5005_c.jpeg" > </div>
+<div class="itm"><img src="/images/1C46DF8F-9EF2-44DF-BA26-44AFDF21CB8C_4_5005_c.jpeg" > </div>
+<div class="itm"><img src="/images/E3AC64BC-429F-4738-B955-6624621E13AB_4_5005_c.jpeg" > </div>
+</div>
+<div class="navig">
+<button class="buprev">◀</button>
+<button class="bunext">▶</button>
+</div>
+</div>
+<!-- КОНЕЦ КАРУСЕЛИ-->
+
+<!--НАЧАЛО ИКНОК ССЫЛОК НА ГЛАВНОЙ СТРАНИЦЕ-->
+<section class="boxicon">
+<a  class="bcontainer"  target="_blank" rel="noopener noreferrer"  href="category.html" style=" text-decoration: none;" >  <img class="icones" src="https://cdn-icons-png.flaticon.com/128/602/602287.png" alt="Ассортимент"> <p   class = "two ">Каталог</p>  </a>
+<a   class="bcontainer"  target="_blank" rel="noopener noreferrer"  style="text-decoration: none;" href="Dostavka.html"><img class="icones" src= "/images/icons8-грузовая-машина-50.png" alt="Доставка">  <p class = "two ">Доставка</p> </a> 
+<a   class="bcontainer"   target="_blank" rel="noopener noreferrer"  style="text-decoration: none;" href=""><img class="icones" src="/images/icons8-гарантия-50.png" alt="Гарантии">  <p   class = "two ">Гарантии</p> </a> 
+<a   class="bcontainer"  target="_blank" rel="noopener noreferrer"  style="text-decoration: none;" href=""><img class="icones" src="/images/icons8-распродажа-64.png" alt="Распродажа">  <p  class = "two " >Распродажа</p> </a> 
+</section>
+<!--КОНЕЦ ИКНОК ССЫЛОК НА ГЛАВНОЙ СТРАНИЦЕ-->
+
+<!-- Слайдер с  товарами со скидкой-->
+<section class="swiper">
+    <h6 class="two" style="font-size:40px; margin-bottom: 20px;">Всё для отдыха на даче</h6>
+    <div class="swiper-wrapper" id="swiper-wrapper2"></div>
+    <div class="swiper-button-prev prev"></div>
+    <div class="swiper-button-next next"></div>
+</section>
+<section class="swiper">
+    <h6 class="two" style="font-size:40px; margin-bottom: 20px;">Распродажа / Обои</h6>
+    <div class="swiper-wrapper" id="swiper-wrapper"></div>
+    <div class="swiper-button-prev prev"></div>
+    <div class="swiper-button-next next"></div>
+</section>
+
+<section class="swiper">
+    <h6 class="two" style="font-size:40px; margin-bottom: 20px;">Рекомендуем</h6>
+    <div class="swiper-wrapper" id="swiper-wrapper3"></div>
+    <div class="swiper-button-prev prev"></div>
+    <div class="swiper-button-next next"></div>
+</section>
+<footer><hr><div class="containr"><div class="subscribe"></div><div class="footer_navigation">
+<div class="footer_menu">
+<div class="item"><div style="font-size: 40px;" class="caption">Покупателям</div>
+<ul class="menu_list">
+<a href="/html/category.html" style="font-size: 30px;">Каталог</a>
+<a href="/about/arktika-servis/"style="font-size: 30px;">Расрочка/Кредиты</a>
+<a href="/about/bonus-program/"style="font-size: 30px;">Бонусная программа</a>
+<a href="/about/podarochnye-karty/"style="font-size: 30px;">Подарочные карты</a>
+</ul></div>
+<div class="item"> 
+<div class="caption" style="font-size: 40px;" >Информация</div>
+<ul class="menu_list">
+<a href="/information/oplata/"style="font-size: 30px;">Как оплатить</a>
+<a href="/information/feedback/"style="font-size: 30px;">Обратная связь</a>
+<a href="/information/jobs/"style="font-size: 30px;">Гарантия качества </a>
+<a href="contacts.html"style="font-size: 30px;">Контакты</a>
+</ul></div>   
+ <div class="item"><div class="caption" style="font-size: 45px;" >Наши услуги</div>
+<ul class="menu_list"style="font-size: 30px;"><a href="dostavkatext.html">Доставка</a>
+</ul>
+</div>
+</div>
+ <div class="contact_info" style="font-size: 30px;" ><div class="phone"><a href="tel:8 (918) 827-20-12">8 (918) 827-20-12</a> (с 09:30 до 19:00) </div>
+<div class="address">Адрес магазина:<br>ул. Астана Кесаева, 33"а, Владикавказ <br> Респ. Северная Осетия — Алания</div> 
+<div class="copyright">© 1996—2024, ТК «Декор центр»  </div>
+</div></div></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+<script  src="/script.js/cart.js" defer></script>
+<script  src="/script.js/cart1.js" defer></script>
+<script src="/script.js/search.js" defer></script>
+<script src="/script.js/advertising.js" defer></script>
+<script src="/script.js/swiper.js" defer></script>
+<script src="/script.js/swiper2.js" defer></script>
+<script src="/script.js/swiper3.js" defer></script>
+<script src="/script.js/catalog.js" defer></script>
+<script src="/script.js/registr.js" defer></script>
+<script src="/script.js/theme.js" defer></script>
+</body></html>

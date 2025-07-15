@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доставка</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/> <!--Ссылка на иконки в регистрации -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" ></script>
+
+</head>
+<body>
+    <header>
+            <div class="header-contaner">
+                <div class="catalog-icon" id="menuBurger">
+        <i class="fas fa-bars"></i>
+    </div>
+    <a href="index.html" class="logo-link">
+        <img src="/images/icons8-главная-64.png" alt="Логотип сайта" class="logo-image">
+      </a>
+                <div class="search-bar">
+                    <input type="search" name="search" placeholder="Поиск товаров">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="cart-icon"  style="font-size: 32px;" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+              <div class="header-contaner">
+            <div class="account-icon"  style="font-size: 32px;" onclick="toggleAccount()">
+                <i class="fas fa-user"></i>
+            </div>
+ </div>
+ </div>
+        </header>
+
+        <div class="cart" id="cart">
+            <h2>Корзина</h2>
+            <div id="cart-items"></div>
+            <a href="cart.html" class= "cartbu">Перейти в корзину</a>  <!--Почему ссылка не работает -->
+            
+            <button class= "cartbu" onclick="clearCart()">Очистить корзину</button>
+        </div>
+
+
+
+
+<!--Каталог-->
+<div class="catalog" id="catalog">
+    <h6>Каталог</h6>
+   <a href="wallpaper.html" style = " text-decoration :none;  color:black;">    <button class="category-button" data-category="1">      
+        <span>Обои</span> <i class="fas fa-chevron-right"></i>
+  </button>  </a>
+    <a href="categorysantexnica.html" style = " text-decoration :none;  color:black;"> <button class="category-button" data-category="2">
+        <span>Сантехника</span> <i class="fas fa-chevron-right"></i>
+    </button>  </a>
+    <a href="/html/category.html" style = " text-decoration :none;  color:black;">    <button class="category-button" data-category="1">      
+        <span>Текстиль</span> <i class="fas fa-chevron-right"></i>
+  </button>  </a>
+    <a href="/html/products.html" style = " text-decoration :none;  color:black;"> <button class="category-button" data-category="2">
+        <span>Напольные покрытия</span> <i class="fas fa-chevron-right"></i>
+    </button>  </a>
+                                      
+</div>
+<!-- Popup для подкатегорий -->
+<div class="popup" id="popup">
+<span class="clobutton" onclick="closePopup()">&times;</span>
+<h2 id="popupTitle"></h2>
+<ul id="popupContent"></ul>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    
+
+
+  <!-- НАЧАЛО РЕГИСТРАЦИИ  -->
+<div class="account" id="account" onmouseleave="hideAccount()">
+    <h2 class="two">Аккаунт</h2>
+    <button class="sign" id="signButton" onclick="openRegisterModal()">Войти или Зарегистрироваться</button>
+</div>
+
+<!-- Модальное окно для регистрации -->
+<div id="registerModal" class="modal">
+    <span class="close" onclick="closeRegisterModal()">&times;</span> 
+    <div class="modal-content sign-in">
+        <form id="loginForm" action="">
+            <h2 style="color: white;" class="two">Войти</h2>
+            <div class="input-group">
+                <input type="loginUsername" id="loginUsername" required> 
+                <label for="loginUsername">Никнейм</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="loginPassword" required>
+                <label for="loginPassword">Пароль</label>
+            </div>
+            <div class="remember">
+                <label><input type="checkbox"> Запомнить меня</label>
+            </div>
+            <button class="registr" type="submit">Войти</button>
+            <div class="signUp-link">
+                <p class="two">У вас нет аккаунта? <a href="#" style="color: white;" class="signUpBtn-link">Регистрация</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="modal-content sign-up">
+        <form id="registerForm" action="">
+            <h2 style="color: white;" class="two">Регистрация</h2><br>
+            <div class="input-group">
+                <input type="text" id="registerusername" required>
+                <label for="registerusername">Имя</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="registerFirstName" required>
+                <label for="registerFirstName">Имя</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="registerLastName" required> 
+                <label for="registerLastName">Фамилия</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="registerEmail" required>
+                <label for="registerEmail">Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="registerPassword" required>
+                <label for="registerPassword">Придумайте пароль</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="registerRepeatPassword" required>
+                <label for="registerRepeatPassword">Повторите пароль</label>
+            </div>
+            <div class="remember">
+                <label style="color: white;" class="two">
+                    <input type="checkbox"> Я соглашаюсь с чем-то
+                </label>
+            </div>
+            <button class="registr" type="submit">Зарегистрироваться</button>
+            <div class="signUp-link">
+                <p style="color: white;" class="two">У Вас уже есть аккаунт?
+                    <a style="color: white;" href="#" class="signInBtn-link">Войти</a>
+                </p>
+                <div class="gogle" type="button" onclick="socialLogin()" style="color: white;">Войти через <span class="social-link">соцсети</span></div>
+            </div>
+            <div class="tooltip" id="tooltip">
+                <span class="clo" onclick="hideTooltip()">&#10006;</span>
+                <ul style="text-align:left; padding:5px; margin-top:10px;">
+                    <li>
+                        <a href="#" style="margin-right: 3px; color: black; display: inline-block;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="margin-right: 3px; color: black; display: inline-block;">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="margin-right: 3px; color: black; display: inline-block;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div></div>
+
+<!--КОНЕЦ РЕГИСТРАЦИИ-->
+ <!-- Кнопка для переключения темы -->
+ <div style="width: 200px; color: #5a7cb3;  margin-top: 10px;" onclick="toggleTheme()">
+    <button style="background: none; border: none; font-size: 23px; color: inherit; cursor: pointer; padding: 0;">
+        Сменить тему
+        <i class="theme-icon fas fa-moon"></i> 
+    </button>
+</div>
+<!-- Хлебные крошки -->
+<nav class="breadcrumb">
+    <a class="breadcrumbtitle" href="index.html"  >Главная</a> &nbsp;&gt;&nbsp; <a class="breadcrumbtitle" href= "dostavkatext.html" >Доставка</a> 
+</nav>
+ 
+<div class="delivery-info">
+    <h6 class="delivery-info__title">Условия доставки</h6>
+    <p class="delivery-info__text">Стоимость доставки рассчитывается автоматически при оформлении заказа на сайте или сотрудником Декор Центра стойке оформления доставки при покупке в магазине. Итоговая стоимость зависит от:</p>
+    <div class="delivery-info__list">
+      <p class="delivery-info__item"> • Зоны доставки.</p>
+      <p class="delivery-info__item"> • Выбранного тарифа.</p>
+      <p class="delivery-info__item"> • Дополнительных услуг.</p>
+      <p class="delivery-info__item"> • Веса товаров в заказе (для крупногабаритного маловесного товара используется условная единица веса).</p>
+    </div>
+
+    <h6 class="delivery-info__title">Виды доставки</h6>
+    <div class="tabs-container">
+      <span class="tab active-tab" onclick="showContent('description')">Без выгрузки</span>
+      <span class="tab" onclick="showContent('details')">До лифта или на дачу</span>
+    </div>
+    
+    <div id="description" class="content" style="display: block;">
+      <p class="delivery-info__text">Вы выгружаете заказ из машины самостоятельно. Время на выгрузку ограничено и зависит от веса заказа:</p>
+      <p class="delivery-info__item">• Заказ от 1 до 1500 кг — 30 минут.</p>
+      <p class="delivery-info__item">• Заказ от 1501 до 5000 кг — 60 минут.</p>
+      <p class="delivery-info__item">• Заказ больше 5000 кг — 120 минут.</p>
+      <p class="delivery-info__text">*Доставка доступна не для любой весовой категории.</p>
+      <p class="delivery-info__text"><a href="/test/word/сайТ ДИПЛОМ.docx" download="Руководство по правилам доставки.docx">Ознакомтесь с подробными правилами дотсавки</a></p>
+    </div>
+    <div id="details" class="content" style="display: none;">
+      <p class="delivery-info__text">Сотрудник службы доставки выгрузит заказ на площадку первого этажа у лифта или занесёт его за дверь частного дома.</p>
+    </div>
+
+    <h6 class="delivery-info__title">Дополнительные услуги</h6>
+    <p class="delivery-info__text">Подъем на этаж по лестнице - подъём товаров вручную, если в доме нет лифта или в нём не хватает места для выбранных товаров. Если вы не заказали услугу заранее, и товар не поместился в лифт, то услуга оплачивается отдельно по установленным расценкам подъема на этаж за каждый 100 кг. Сотрудник Декор центр свяжется с вами для уточнения способа оплаты.</p>
+    
+    <h6 class="delivery-info__title">Получение заказа</h6>
+    <p class="delivery-info__text">Перед приездом на адрес мы заранее предупредим вас. Сотрудник службы доставки свяжется с вами, когда будет на месте. После приезда он ждёт 15 минут и уезжает. Если вы не смогли получить заказ, повторную доставку нужно оплатить отдельно.</p>
+    <p class="delivery-info__text">Если служба доставки не успеет приехать в назначенный интервал времени, то мы вернём вам стоимость доставки. Стоимость доставки возвращается из расчёта по тарифу «Без выгрузки» (если его нет, то «На улицу»). Дополнительные услуги проноса, подъёма товара на этаж не компенсируются.</p>
+    <p class="delivery-info__text">Доставка не компенсируется, если:</p>
+    <p class="delivery-info__item">- она была перенесена покупателем;</p>
+    <p class="delivery-info__item">- были заказаны товары, помеченные на сайте ярлыком «Только онлайн-заказ»;</p>
+    <p class="delivery-info__item">- покупатель предоставил неполный или неверный адрес или контакты;</p>
+    <p class="delivery-info__item">- на пути были препятствия, мешающие подъезду или выгрузке;</p>
+    <p class="delivery-info__item">- произошёл форс-мажор;</p>
+    <p class="delivery-info__text">Для возврата стоимости доставки зафиксируйте время прибытия в акте приёма-передачи и обратитесь с ним в магазин, где вы оформляли доставку. Если вы заказывали на сайте, напишите в нашу службу клиентской поддержки или позвоните по телефону 8 800 700-00-99</p>
+    <p class="delivery-info__text">При получении товаров рекомендуется их распаковать и сверить с заказом, а также убедиться, что товары и упаковка не повреждены. На проверку товаров у вас есть 30 минут. Сотрудник транспортной компании вскроет упаковку при вас.</p>
+    <p class="delivery-info__text">После передачи товара сотрудник транспортной компании вывезет мусор — верхнюю транспортную упаковку, скотч и другую не заводскую упаковку, снятую при проверке товаров.</p>
+    <p class="delivery-info__text">После получения и проверки заказа внимательно ознакомьтесь с документами и подпишите их. После подписания акта приёма-передачи претензии по количеству и качеству полученного товара не принимаются.</p>
+    <p class="delivery-info__text">Если к месту разгрузки невозможно подъехать, мы остановимся как можно ближе, без нарушений ПДД и повреждений транспорта. Водитель паркуется так, чтобы выгрузить товары безопасно, не мешая пешеходам и другим машинам.</p>
+
+    <h6 class="delivery-info__title">Техническая поддержка</h6>
+    <p class="delivery-info__text">В нашем строительном магазине мы ценим ваше время и комфорт, поэтому предлагаем профессиональную техническую поддержку на всех этапах сотрудничества. Наши специалисты помогут подобрать материалы, разобраться в особенностях оборудования и решить любые технические вопросы.</p>
+    <p class="delivery-info__text">Если у вас возникли сложности с использованием товара, сборкой или настройкой, наша команда готова предложить дистанционную или выездную помощь. Мы не только дадим подробные рекомендации, но и поможем устранить проблему максимально быстро.</p>
+</div>
+ 
+ <button class="primary-btn" id="supportButton">Связаться с поддержкой</button>
+        </div>
+   
+    <section class="contact-form" id="contactFormSection">
+        <h2>Свяжитесь с нами</h2>
+        <form id="contactForm">
+            <label class="tab" style="font-size:24px;" for="name">Имя:</label>
+            <input style="font-size:20px;"  type="text" id="name" name="name" required>
+            <label class="tab" style="font-size:24px;"  for="email">Email:</label>
+            <input style="font-size:20px;" type="email" id="email" name="email" required>
+            <label class="tab" style="font-size:24px;"  for="message">Сообщение:</label>
+            <textarea style="font-size:20px;"  id="message" name="message" rows="4" required></textarea>
+            <button  class="oplat" style="background-color: #688EBD;" type="submit">Отправить</button>
+        </form>
+        <section class="messages-list" id="messagesSection">
+            <h2>Последние вопросы и ответы</h2>
+            <div id="messagesContainer"></div>
+        </section>
+    </section>
+     
+</main>
+
+
+<style>
+    .messages-list {
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 25px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .messages-list h2 {
+        color: #2c3e50;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f0f0f0;
+        text-align: center;
+    }
+
+    #messagesContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Стили для отдельных сообщений (можно добавить позже) */
+    .message {
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .message.question {
+        border-left: 4px solid #3498db;
+        background-color: #eaf4fd;
+    }
+
+    .message.answer {
+        border-left: 4px solid #2ecc71;
+        background-color: #e8f8f0;
+        margin-left: 30px;
+    }
+
+    .messages-list {
+        padding: 20px;
+        margin: 20px 0;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+    }
+    
+    .message-item {
+        padding: 15px;
+        margin-bottom: 15px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .message-question {
+        font-weight: bold;
+        font-size: 18px;
+        color: #333;
+    }
+    
+    .message-answer {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #555;
+    }
+    
+    .message-date {
+        font-size: 14px;
+        color: #888;
+        margin-top: 10px;
+        text-align: right;
+    }
+</style>
+
+<script>
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('http://127.0.0.1:8000/api-core/message-list/')
+        .then(response => {
+            console.log('Status:', response.status);
+            if (!response.ok) throw new Error('HTTP error');
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data:', data);
+            const container = document.getElementById('messagesContainer');
+            
+            if (!data.length) {
+                container.innerHTML = '<p>Нет сообщений.</p>';
+                return;
+            }
+
+            data.forEach(message => {
+                const messageEl = document.createElement('div');
+                messageEl.className = 'message-item';
+
+                const question = document.createElement('div');
+                question.className = 'message-question';
+                question.textContent = message.question;
+                messageEl.appendChild(question);
+
+                const answer = document.createElement('div');
+                answer.className = 'message-answer';
+                answer.textContent = message.answer ? `Ответ: ${message.answer}` : '(Нет ответа)';
+                messageEl.appendChild(answer);
+
+                const date = document.createElement('div');
+                date.className = 'message-date';
+                date.textContent = new Date(message.created).toLocaleString();
+                messageEl.appendChild(date);
+
+                container.appendChild(messageEl);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('messagesContainer').innerHTML = 
+                '<p>Ошибка загрузки сообщений.</p>';
+        });
+});
+</script>
+</div> 
+
+    <p class="delivery-info__text">"Декор Центр" - находится по улице Астана Кесаева, 33A, с правой стороны от перекрёстка с улицей Весенней. Наше расположение очень удобно и сюда можно доехать не только на автомобиле, но и на общественным транспорте.</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.9185606229294!2d44.62418607682363!3d43.04314497113762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x405a9ff7391abaf1%3A0x25d1adbad5b2c14!2z0JTQtdC60L7RgCDQptC10L3RgtGA!5e0!3m2!1sru!2sru!4v1741169636432!5m2!1sru!2sru" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+    <footer>
+        <hr>
+        <div class="containr"><div class="subscribe"></div><div class="footer_navigation">
+            <div class="footer_menu">
+        <div class="item"><div class="caption">Покупателям</div>
+        <ul class="menu_list">
+            <a href="/html/category.html">Каталог</a>
+            <a href="/about/arktika-servis/">Расрочка/Кредиты</a>
+            <a href="/about/bonus-program/">Бонусная программа</a>
+            <a href="/about/podarochnye-karty/">Подарочные карты</a>
+        </ul></div>
+        <div class="item"> 
+            <div class="caption">Информация</div>
+        <ul class="menu_list">
+            <a href="/information/oplata/">Как оплатить</a>
+            <a href="/information/feedback/">Обратная связь</a>
+            <a href="/information/jobs/">Гарантия качества </a>
+           <a href="contacts.html">Контакты</a>
+        </ul></div>   
+
+             <div class="item"><div class="caption">Наши услуги</div>
+            <ul class="menu_list"><a href="dostavkatext.html">Доставка</a>
+            </ul>
+        </div>
+        </div>
+             <div class="contact_info"><div class="phone"><a href="tel:8 (918) 827-20-12">8 (918) 827-20-12</a> (с 09:30 до 19:00) </div>
+            <div class="address">Адрес магазина:<br>ул. Астана Кесаева, 33"а, Владикавказ <br> Респ. Северная Осетия — Алания</div> 
+            <div class="copyright">© 1996—2024, ТК «Декор центр»  </div>
+        </div></div></div>
+    </footer>
+    <script src="/script.js/registr.js" defer></script>
+<script src="/script.js/auth.js" defer></script>
+<script src="/script.js/catalog.js" defer> </script>
+<script src="/script.js/dostavkatext.js" defer></script>
+<script src="/script.js/theme.js" defer></script>
+<script src="/script.js/dostavka.js" defer></script>
+    </body>
+
+</html>
+
+
+
+ 

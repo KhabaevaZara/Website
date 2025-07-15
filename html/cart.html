@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали товара</title>
+    <link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/> <!--Ссылка на иконки в регистрации -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+<body>
+    
+    <header>
+        <div class="header-contaner">
+            <div class="catalog-icon" id="menuBurger">
+    <i class="fas fa-bars"></i>
+</div>
+<a href="index.html" class="logo-link">
+    <img src="/images/icons8-главная-64.png" alt="Логотип сайта" class="logo-image">
+  </a>
+            <div class="search-bar">
+                <input type="search" name="search" placeholder="Поиск товаров">
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="cart-icon" style="font-size: 32px;"  onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+          <div class="header-contaner">
+        <div class="account-icon" style="font-size: 32px;"  onclick="toggleAccount()">
+            <i class="fas fa-user"></i>
+        </div>
+        </div>
+                   <!-- Кнопка для переключения темы -->
+ <div style= "color:black; " onclick="toggleTheme()">
+    <button style="background: none; border: none; font-size: 32px; color: inherit; cursor: pointer; padding: 5px;">
+        <i class="theme-icon fas fa-moon"></i> 
+    </button>
+</div>
+        </div>
+    </header>
+  
+<body>
+    <div class="preloader">
+        <div class="preloader__row">
+          <div class="preloader__item"></div>
+          <div class="preloader__item"></div>
+        </div>
+      </div>
+
+
+   <!--Каталог-->
+ <div class="catalog" id="catalog">
+    <h6>Каталог</h6>
+   <a href="wallpaper.html" style = " text-decoration :none;  color:black;">    <button class="category-button" data-category="1">      
+        <span>Обои</span> <i class="fas fa-chevron-right"></i>
+  </button>  </a>
+    <a href="categorysantexnica.html" style = " text-decoration :none;  color:black;"> <button class="category-button" data-category="2">
+        <span>Сантехника</span> <i class="fas fa-chevron-right"></i>
+    </button>  </a>
+    <a href="/html/category.html" style = " text-decoration :none;  color:black;">    <button class="category-button" data-category="1">      
+        <span>Текстиль</span> <i class="fas fa-chevron-right"></i>
+  </button>  </a>
+    <a href="/html/products.html" style = " text-decoration :none;  color:black;"> <button class="category-button" data-category="2">
+        <span>Напольные покрытия</span> <i class="fas fa-chevron-right"></i>
+    </button>  </a>
+                                      
+</div>
+<!-- Popup для подкатегорий -->
+<div class="popup" id="popup">
+<span class="clobutton" onclick="closePopup()">&times;</span>
+<h2 id="popupTitle"></h2>
+<ul id="popupContent"></ul>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    
+
+   
+
+ <!-- НАЧАЛО РЕГИСТРАЦИИ  -->
+<div class="account" id="account" onmouseleave="hideAccount()">
+    <h2 class="two">Аккаунт</h2>
+    <button class="sign" id="signButton" onclick="openRegisterModal()">Войти или Зарегистрироваться</button>
+</div>
+
+<!-- Модальное окно для регистрации -->
+<div id="registerModal" class="modal">
+    <span class="close" onclick="closeRegisterModal()">&times;</span> 
+    <div class="modal-content sign-in">
+        <form id="loginForm" action="">
+            <h2 style="color: white;" class="two">Войти</h2>
+            <div class="input-group">
+                <input type="loginUsername" id="loginUsername" required> 
+                <label for="loginUsername">Никнейм</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="loginPassword" required>
+                <label for="loginPassword">Пароль</label>
+            </div>
+            <div class="remember">
+                <label><input type="checkbox"> Запомнить меня</label>
+            </div>
+            <button class="registr" type="submit">Войти</button>
+            <div class="signUp-link">
+                <p class="two">У вас нет аккаунта? <a href="#" style="color: white;" class="signUpBtn-link">Регистрация</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="modal-content sign-up">
+        <form id="registerForm" action="">
+            <h2 style="color: white;" class="two">Регистрация</h2><br>
+            <div class="input-group">
+                <input type="text" id="registerusername" required>
+                <label for="registerusername">Имя</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="registerFirstName" required>
+                <label for="registerFirstName">Имя</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="registerLastName" required> <!-- Добавила еще  поле фамилии -->
+                <label for="registerLastName">Фамилия</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="registerEmail" required> <!-- Добавила еще поле email -->
+                <label for="registerEmail">Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="registerPassword" required>
+                <label for="registerPassword">Придумайте пароль</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="registerRepeatPassword" required> <!-- Добавила еще  поле повторения пароля -->
+                <label for="registerRepeatPassword">Повторите пароль</label>
+            </div>
+            <div class="remember">
+                <label style="color: white;" class="two">
+                    <input type="checkbox"> Я соглашаюсь с чем-то
+                </label>
+            </div>
+            <button class="registr" type="submit">Зарегистрироваться</button>
+            <div class="signUp-link">
+                <p style="color: white;" class="two">У Вас уже есть аккаунт?
+                    <a style="color: white;" href="#" class="signInBtn-link">Войти</a>
+                </p>
+                <div class="gogle" type="button" onclick="socialLogin()" style="color: white;">Войти через <span class="social-link">соцсети</span></div>
+            </div>
+            <div class="tooltip" id="tooltip">
+                <span class="clo" onclick="hideTooltip()">&#10006;</span>
+                <ul style="text-align:left; padding:5px; margin-top:10px;">
+                    <li>
+                        <a href="#" style="margin-right: 3px; color: black; display: inline-block;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="margin-right: 3px; color: black; display: inline-block;">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="margin-right: 3px; color: black; display: inline-block;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div></div>
+
+<!--КОНЕЦ РЕГИСТРАЦИИ-->
+
+    <style>
+  
+    </style>
+    
+   
+      
+
+   
+    <div class="user-profile-container">
+        <h1 style="text-align: center;"> 🛒 Корзина</h1>
+
+        <div class="avatar-container">
+            <img alt="Ваш аватар" class="avatar">
+            <button class="change-avatar-button">Сменить аватар</button>
+            <input type="file" id="avatar-input" accept="image/*" style="display:none;">
+        </div>
+        <div id="cart-items"></div>
+    </div>
+    
+    <style>
+        .user-profile-container {
+            max-width: auto;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }</style>
+    
+    <div id="total-price"></div>
+    <div class="action-buttons">
+        <button class="action-btn continue-btn" onclick="window.history.back()">← Продолжить покупки</button>
+        
+    </head>
+    <body>
+        <button class="action-btn checkout-btn">Оформить заказ</button>
+        <div id="response-message"></div>
+    
+        <script>
+            document.querySelector('.checkout-btn').addEventListener('click', function() {
+                
+                const orderData = {
+                    price: 1000, 
+                    status: 'created', 
+                };
+                
+                // Отправляем POST-запрос к API
+                fetch('http://127.0.0.1:8000/api-core/api-create-order/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                'X-CSRFToken': getCSRFToken(),
+'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+                    
+                    },
+                    body: JSON.stringify(orderData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Ошибка сети');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const messageDiv = document.getElementById('response-message');
+                    messageDiv.textContent = `Заказ успешно создан! ID: ${data.id}, Цена: ${data.price}, Статус: ${data.status}`;
+                    messageDiv.className = 'success';
+                    messageDiv.style.display = 'block';
+                    
+                    console.log('Заказ создан:', data);
+                })
+                .catch(error => {
+                    const messageDiv = document.getElementById('response-message');
+                    messageDiv.textContent = `Ошибка при создании заказа: ${error.message}`;
+                    messageDiv.className = 'error';
+                    messageDiv.style.display = 'block';
+                    
+                    console.error('Ошибка:', error);
+                });
+            });
+        </script>
+    </div>
+
+    <footer><hr><div class="containr"><div class="subscribe"></div><div class="footer_navigation">
+        <div class="footer_menu">
+        <div class="item"><div class="caption">Покупателям</div>
+        <ul class="menu_list">
+        <a href="/html/category.html">Каталог</a>
+        <a href="/about/arktika-servis/">Расрочка/Кредиты</a>
+        <a href="/about/bonus-program/">Бонусная программа</a>
+        <a href="/about/podarochnye-karty/">Подарочные карты</a>
+        </ul></div>
+        <div class="item"> 
+        <div class="caption">Информация</div>
+        <ul class="menu_list">
+        <a href="/information/oplata/">Как оплатить</a>
+        <a href="/information/feedback/">Обратная связь</a>
+        <a href="/information/jobs/">Гарантия качества </a>
+        <a href="contacts.html">Контакты</a>
+        </ul></div>   
+         <div class="item"><div class="caption">Наши услуги</div>
+        <ul class="menu_list"><a href="dostavkatext.html">Доставка</a>
+        </ul>
+        </div>
+        </div>
+         <div class="contact_info"><div class="phone"><a href="tel:8 (918) 827-20-12">8 (918) 827-20-12</a> (с 09:30 до 19:00) </div>
+        <div class="address">Адрес магазина:<br>ул. Астана Кесаева, 33"а, Владикавказ <br> Респ. Северная Осетия — Алания</div> 
+        <div class="copyright">© 1996—2024, ТК «Декор центр»  </div>
+        </div></div></div></footer>
+<script src="/script.js/catalog.js" defer></script>
+<script src="/script.js/registr.js" defer></script>
+<script src="/script.js/cart1.js" defer></script>
+<script src="/script.js/theme.js" defer></script>
+<script src="/script.js/kabinet.js" defer></script>
+</body>
+</html>
